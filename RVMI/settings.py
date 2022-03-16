@@ -1,7 +1,7 @@
 from .dev import *
 
 DEBUG = False
-ALLOWED_HOSTS = ['localhost',]
+ALLOWED_HOSTS = ['localhost']
 ST_SITE_URL = 'http://49.52.10.133:8090/'
 LANGUAGE_CODE = 'zh-hans'
 TIME_ZONE = 'Asia/Shanghai'

@@ -136,7 +136,7 @@ ST_UPLOAD_IMAGE_ENABLED = True
 #: .. Warning::
 #:     Allowing PNG files is a security risk as it may contain malicious HTML.
 #:     See `Django notes <https://docs.djangoproject.com/en/1.11/topics/security/#user-uploaded-content>`_
-ST_ALLOWED_UPLOAD_IMAGE_FORMAT = ('jpeg', 'jpg', 'gif')
+ST_ALLOWED_UPLOAD_IMAGE_FORMAT = ('jpeg', 'jpg', 'gif','png')
 
 #: Enable/disable file uploads within posts.
 #: Requires running ``pip install django-spirit[files]`` to install
