@@ -42,6 +42,8 @@
       <div class="topic__date" title="{{ t.last_active }}">
         <i class="fa fa-clock-o"
         ></i> {{ t.last_active|shortnaturaltime }}
+          <i> <span class="views-count"><a  href="#">{{t.view_count}} read</a></span></i>
+
       </div>
     </div>
     {% empty %}
