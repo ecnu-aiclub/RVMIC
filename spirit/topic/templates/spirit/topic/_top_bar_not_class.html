@@ -1,0 +1,18 @@
+{% load i18n %}
+
+<div class="layout__menu">
+  <div class="menu__dropdown js-tabs-container">
+
+    <div class="menu_list_wrapper js-tab-content js-categories-content">
+      {% spaceless %}
+        <ul class="menu_list_topics">
+          {% for c in categories %}
+            <a class="menu_list__link_frontpage" href="{{ c.get_absolute_url }}"
+            >{{ c.title }}</a>
+          {% endfor %}
+        </ul>
+      {% endspaceless %}
+    </div>
+  </div>
+
+</div>
