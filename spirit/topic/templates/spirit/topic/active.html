@@ -6,10 +6,18 @@
 
 {% block content %}
   <div class="layout__article">
-    {% include "spirit/topic/_top_bar.html" with category=None categories=categories %}
+    <p>课程板块</p>
+    {% include "spirit/topic/_top_bar_class.html" with category=None categories=categories_class %}
 
-    {% include "spirit/topic/_render_list.html" %}
+    {% include "spirit/topic/_render_list.html" with topics=topics_class %}
 
-    {% render_paginator topics %}
+    <!--{% render_paginator topics_class %} -->
+    <p>闲谈板块</p>
+    {% include "spirit/topic/_top_bar_not_class.html" with category=None categories=categories_not_class %}
+
+    {% include "spirit/topic/_render_list.html" with topics=topics_not_class%}
+
+    <!--{% render_paginator topics_not_class %} -->
+
   </div>
 {% endblock %}

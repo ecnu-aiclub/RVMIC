@@ -102,28 +102,57 @@ def detail(request, pk, slug):
 
 
 def index_active(request):
-    categories = (
+    #new
+    categories_not_class = (
         Category.objects
         .visible()
         .parents()
-        .ordered())
+        .ordered()
+        .is_not_class()
+        )
+    categories_class= (
+        Category.objects
+            .visible()
+            .parents()
+            .ordered()
+            .is_class())
 
-    topics = (
+
+    topics_class = (
         Topic.objects
         .visible()
         .global_()
         .with_bookmarks(user=request.user)
         .order_by('-is_globally_pinned', '-last_active')
-        .select_related('category'))
+        .select_related('category')
+        .is_class()
+        )
+    topics_not_class = (
+        Topic.objects
+            .visible()
+            .global_()
+            .with_bookmarks(user=request.user)
+            .order_by('-is_globally_pinned', '-last_active')
+            .select_related('category')
+            .is_not_class()
+    )
 
-    topics = yt_paginate(
-        topics,
-        per_page=config.topics_per_page,
+    topics_class = yt_paginate(
+        topics_class,
+        # per_page=config.topics_per_page,
+        per_page=10,
+        page_number=request.GET.get('page', 1))
+    topics_not_class = yt_paginate(
+        topics_not_class,
+        # per_page=config.topics_per_page,
+        per_page=10,
         page_number=request.GET.get('page', 1))
 
     return render(
         request=request,
         template_name='spirit/topic/active.html',
         context={
-            'categories': categories,
-            'topics': topics})
+            'categories_not_class': categories_not_class,
+            'categories_class': categories_class,
+            'topics_not_class': topics_not_class,
+            'topics_class': topics_class})

@@ -72,3 +72,12 @@ class TopicQuerySet(models.QuerySet):
             return get_object_or_404(self.public(), pk=pk)
         else:
             return get_object_or_404(self.visible().opened(), pk=pk, user=user)
+
+    #new
+    def is_class(self):
+        return self.filter(category__is_class=True)
+    def is_not_class(self):
+        return self.filter(category__is_class=False)
+
+
+

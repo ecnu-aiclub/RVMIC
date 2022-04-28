@@ -36,3 +36,9 @@ class CategoryQuerySet(models.QuerySet):
         if settings.ST_ORDERED_CATEGORIES:
             return self.order_by('sort', 'pk')
         return self.order_by('title', 'pk')
+
+    #new
+    def is_class(self):
+        return self.filter(is_class=True)
+    def is_not_class(self):
+        return self.filter(is_class=False)

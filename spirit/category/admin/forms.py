@@ -22,6 +22,7 @@ class CategoryForm(forms.ModelForm):
             "is_global",
             "is_closed",
             "is_removed",
+            "is_class",
             "color")
 
     def __init__(self, *args, **kwargs):
