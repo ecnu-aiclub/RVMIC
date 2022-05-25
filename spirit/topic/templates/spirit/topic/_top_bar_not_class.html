@@ -1,11 +1,11 @@
 {% load i18n %}
 
-<div class="layout__menu">
+<div class="layout__chat__menu">
   <div class="menu__dropdown js-tabs-container">
 
     <div class="menu_list_wrapper js-tab-content js-categories-content">
       {% spaceless %}
-        <ul class="menu_list_topics">
+        <ul class="menu_list_topics__frontpage">
           {% for c in categories %}
             <a class="menu_list__link_frontpage" href="{{ c.get_absolute_url }}"
             >{{ c.title }}</a>

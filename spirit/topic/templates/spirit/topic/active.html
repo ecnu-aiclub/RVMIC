@@ -6,18 +6,36 @@
 
 {% block content %}
   <div class="layout__article">
-    <p>课程板块</p>
+
+    <div class="menu__frontpage__new_topic">
+    {% if category %}
+      <a class="button" href="{% url "spirit:topic:publish" category.pk %}"
+      >{% trans "Create Topic" %}</a>
+    {% else %}
+      <a class="button" href="{% url "spirit:topic:publish" %}"
+      >{% trans "Create Topic" %}</a>
+    {% endif %}
+  </div>
+
+    <p class="category_title">最新帖子</p>
+    <p class="category_title">课程板块</p>
+
     {% include "spirit/topic/_top_bar_class.html" with category=None categories=categories_class %}
 
     {% include "spirit/topic/_render_list.html" with topics=topics_class %}
 
     <!--{% render_paginator topics_class %} -->
-    <p>闲谈板块</p>
+
+    <p class="category_title">闲谈板块</p>
     {% include "spirit/topic/_top_bar_not_class.html" with category=None categories=categories_not_class %}
 
-    {% include "spirit/topic/_render_list.html" with topics=topics_not_class%}
 
+    {% include "spirit/topic/_render_list_new.html" with topics=topics_not_class%}
+
+
+    </div>
     <!--{% render_paginator topics_not_class %} -->
 
-  </div>
+
+
 {% endblock %}
